@@ -32,7 +32,32 @@
     <footer>
         <p>&copy; 2025 Phoenix - The School of Excellence. All Rights Reserved.</p>
     </footer>
-    <script src="js/scripts.js"></script>
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuContent = document.getElementById('mobileMenuContent');
+    
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('hidden');
+            mobileMenuContent.classList.remove('-translate-x-full');
+            mobileMenuContent.classList.add('translate-x-0');
+        });
+    
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuContent.classList.remove('translate-x-0');
+            mobileMenuContent.classList.add('-translate-x-full');
+        });
+    
+        mobileMenuOverlay.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuContent.classList.remove('translate-x-0');
+            mobileMenuContent.classList.add('-translate-x-full');
+        });
+      </script>
+      <script src="mobileview.js"></script>
 </body>
 
 </html>

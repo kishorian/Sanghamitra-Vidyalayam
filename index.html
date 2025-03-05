@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,6 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="media-queries.css">
     <style>
+        :root {
+            --primary-color: #001f3f;
+            --secondary-color: #001a35;
+            --accent-color: #ffdd57;
+        }
+
         .fade-in {
             animation: fadeIn 2s ease-in-out;
         }
@@ -83,12 +90,13 @@
             background-color: #ddd;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
             display: block;
         }
 
         .header {
-            background: linear-gradient(90deg, #001f3f 0%, #001a35 100%);
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -105,7 +113,7 @@
         }
 
         .nav-link:hover {
-            color: #ffdd57;
+            color: var(--accent-color);
         }
 
         .search-input {
@@ -150,76 +158,171 @@
 
         .hero-button:hover {
             background-color: white;
-            color: #001f3f;
+            color: var(--primary-color);
         }
 
-      
+        /* Mobile view adjustments */
+        @media (max-width: 768px) {
+            .hero-section .flex.space-x-4 {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.25rem;
+            }
+
+            .hero-section .hero-button {
+                width: 90px;
+                height: 40px;
+                padding: 0.3rem 0.25rem;
+                font-size: 0.65rem;
+            }
+
+            .welcome-message .flex.space-x-4 a {
+                width: 200px !important;
+                margin: 0.5rem auto;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            #campusVideo {
+                width: 100% !important;
+                height: 300px !important;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+            }
+
+            .dropdown:hover .dropdown-content,
+            .dropdown:focus-within .dropdown-content {
+                display: block;
+            }
+        }
+        
     </style>
 </head>
 
 <body class="font-sans">
     <!-- Header Section -->
     <header class="bg-blue-900 text-white font-cinzel">
-        <div class="container mx-auto py-4 px-6" style="background-color: #001f3f;">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <img src="images/school-logo1.png" alt="Sanghamitra School Logo" class="h-10 w-10 mr-3">
-              <div>
-                <h1 class="text-xl font-bold">SANGHAMITRA VIDYALAYAM</h1>
-                <p class="text-sm">IN ASSOCIATION WITH NARAYANA GROUP OF SCHOOLS</p>
-              </div>
+        <div class="container mx-auto py-4 px-6" style="background-color: var(--primary-color);">
+            <!-- Top Section: Logo and Search -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="images/school-logo1.png" alt="Sanghamitra School Logo" class="h-10 w-10 mr-3">
+                    <div>
+                        <h1 class="text-xl font-bold">SANGHAMITRA VIDYALAYAM</h1>
+                        <p class="text-sm">IN ASSOCIATION WITH NARAYANA GROUP OF SCHOOLS</p>
+                    </div>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                <!-- Search Bar (Hidden on Mobile) -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <input type="text" placeholder="Search..." class="px-2 py-1 rounded search-input">
+                    <button class="bg-yellow-400 text-blue-900 px-2 py-1 rounded">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
             </div>
-            <div class="flex items-center space-x-2">
-              <input type="text" placeholder="Search..." class="px-2 py-1 rounded">
-              <button class="bg-yellow-400 text-blue-900 px-2 py-1 rounded">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-          <div class="border-t border-white mt-4"></div>
-          <nav class="mt-4 flex justify-between space-x-6">
-            <a href="index.html" class="hover:text-yellow-400">Home</a>
-            <div class="dropdown relative">
-              <a  class="hover:text-yellow-400">About</a>
-              <div class="dropdown-content">
-                <a href="about-school.html">About School</a>
-                <a href="philosophy.html">Philosophy</a>
-                <a href="vision-mission.html">Vision & Mission</a>
-                <a href="management.html">Our Management</a>
-                <a href="achievements.html">Achievements</a>
-              </div>
-            </div>
-            <div class="dropdown relative">
-              <a class="hover:text-yellow-400">Academics</a>
-              <div class="dropdown-content">
-                <a href="academics-pre-primary.html">Pre-Primary Level</a>
-                <a href="academics-primary.html">Primary Level</a>
-                <a href="academics-middle-secondary.html">Middle & Secondary Level</a>
-                <a href="academics-senior-secondary.html">Senior Secondary Level</a>
-              </div>
-            </div>
-            <div class="dropdown relative">
-              <a  class="hover-underline-animation nav-link">Admissions</a>
-              <div class="dropdown-content absolute">
-                  <a href="admissions-info.html">Admission Info</a>
-                  <a href="admissions-process.html">Admission Process</a>
-                  <a href="admissions-apply-online.html">Apply Online</a>
-                  <a href="admissions-faqs.html">FAQs</a>
-              </div>
-          </div>
-          <a href="campus-life.html" class="hover:text-yellow-400">Campus Life</a>
-          <a href="news-events.html" class="hover:text-yellow-400">News & Events</a>
-            <a href="blogs.html" class="hover:text-yellow-400">Blogs</a>
-            <a href="facilities.html" class="hover:text-yellow-400">Facilities</a>
-            <a href="careers.html" class="hover:text-yellow-400">Careers</a>
-            <a href="contact.html" class="hover:text-yellow-400">Contact Us</a>
-          </nav>
+            <div class="border-t border-white mt-4"></div>
+    
+            <!-- Navigation Menu -->
+            <nav id="mainNav" class="mt-4 hidden md:flex justify-between space-x-6">
+                <a href="index.html" class="hover:text-yellow-400">Home</a>
+                <div class="dropdown relative">
+                    <a class="hover:text-yellow-400">About</a>
+                    <div class="dropdown-content">
+                        <a href="about-school.html">About School</a>
+                        <a href="philosophy.html">Philosophy</a>
+                        <a href="vision-mission.html">Vision & Mission</a>
+                        <a href="management.html">Our Management</a>
+                        <a href="achievements.html">Achievements</a>
+                    </div>
+                </div>
+                <div class="dropdown relative">
+                    <a class="hover:text-yellow-400">Academics</a>
+                    <div class="dropdown-content">
+                        <a href="academics-pre-primary.html">Pre-Primary Level</a>
+                        <a href="academics-primary.html">Primary Level</a>
+                        <a href="academics-middle-secondary.html">Middle & Secondary Level</a>
+                        <a href="academics-senior-secondary.html">Senior Secondary Level</a>
+                    </div>
+                </div>
+                <div class="dropdown relative">
+                    <a class="hover-underline-animation nav-link">Admissions</a>
+                    <div class="dropdown-content absolute">
+                        <a href="admissions-info.html">Admission Info</a>
+                        <a href="admissions-process.html">Admission Process</a>
+                        <a href="admissions-apply-online.html">Apply Online</a>
+                        <a href="admissions-faqs.html">FAQs</a>
+                    </div>
+                </div>
+                <a href="campus-life.html" class="hover:text-yellow-400">Campus Life</a>
+                <a href="news-events.html" class="hover:text-yellow-400">News & Events</a>
+                <a href="blogs.html" class="hover:text-yellow-400">Blogs</a>
+                <a href="facilities.html" class="hover:text-yellow-400">Facilities</a>
+                <a href="careers.html" class="hover:text-yellow-400">Careers</a>
+                <a href="contact.html" class="hover:text-yellow-400">Contact Us</a>
+            </nav>
         </div>
-      </header>
+    </header>
+    
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden"></div>
+    
+    <!-- Mobile Menu Content -->
+    <div id="mobileMenuContent" class="fixed inset-y-0 left-0 w-64 bg-white text-black z-50 transform -translate-x-full transition-transform duration-300">
+        <div class="p-4">
+            <button id="closeMobileMenu" class="text-black focus:outline-none">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <nav class="mt-4 flex flex-col space-y-4">
+                <a href="index.html" class="hover:text-yellow-400">Home</a>
+                <div class="dropdown relative">
+                    <a class="hover:text-yellow-400">About</a>
+                    <div class="dropdown-content">
+                        <a href="about-school.html">About School</a>
+                        <a href="philosophy.html">Philosophy</a>
+                        <a href="vision-mission.html">Vision & Mission</a>
+                        <a href="management.html">Our Management</a>
+                        <a href="achievements.html">Achievements</a>
+                    </div>
+                </div>
+                <div class="dropdown relative">
+                    <a class="hover:text-yellow-400">Academics</a>
+                    <div class="dropdown-content">
+                        <a href="academics-pre-primary.html">Pre-Primary Level</a>
+                        <a href="academics-primary.html">Primary Level</a>
+                        <a href="academics-middle-secondary.html">Middle & Secondary Level</a>
+                        <a href="academics-senior-secondary.html">Senior Secondary Level</a>
+                    </div>
+                </div>
+                <div class="dropdown relative">
+                    <a class="hover-underline-animation nav-link">Admissions</a>
+                    <div class="dropdown-content absolute">
+                        <a href="admissions-info.html">Admission Info</a>
+                        <a href="admissions-process.html">Admission Process</a>
+                        <a href="admissions-apply-online.html">Apply Online</a>
+                        <a href="admissions-faqs.html">FAQs</a>
+                    </div>
+                </div>
+                <a href="campus-life.html" class="hover:text-yellow-400">Campus Life</a>
+                <a href="news-events.html" class="hover:text-yellow-400">News & Events</a>
+                <a href="blogs.html" class="hover:text-yellow-400">Blogs</a>
+                <a href="facilities.html" class="hover:text-yellow-400">Facilities</a>
+                <a href="careers.html" class="hover:text-yellow-400">Careers</a>
+                <a href="contact.html" class="hover:text-yellow-400">Contact Us</a>
+            </nav>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-section relative p-6 md:p-12">
-        <img src="images/school_campus2.jpg" alt="Sanghamitra Campus" class="w-full h-96 object-cover">
+        <img src="images/school_campus2.jpg" alt="Sanghamitra Campus" class="w-full h-96 object-cover" loading="lazy">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white hero-content">
             <h2 class="text-4xl font-bold">WELCOME TO SANGHAMITRA FAMILY</h2>
             <p class="text-xl mt-2">Where Excellence Meets Opportunity!</p>
@@ -237,12 +340,12 @@
             <h3 class="text-3xl font-bold slide-up">THE SCHOOL OF EXCELLENCE</h3>
             <p class="text-lg mt-4 slide-up">At Sanghamitra, we are committed to providing a holistic education that nurtures young minds and empowers them to become confident, compassionate, and successful individuals. Our mission is to foster a lifelong love of learning, develop critical thinking skills, and prepare students for the challenges and opportunities of the 21st century. We believe in creating a supportive and inclusive environment where every student can thrive and reach their full potential.</p>
             <div class="mt-8 flex justify-center space-x-4 slide-up">
-                <a href="about-school.html" class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition inline-block text-center">
+                <a href="about-school.html" class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition inline-block text-center" style="width: 200px;">
                     Discover Sanghamitra
                 </a>
-                <a href="admissions-apply-online.html" class="mt-8 bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition slide-up inline-block text-center">
+                <a href="admissions-apply-online.html" class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition inline-block text-center" style="width: 200px;">
                     Apply Now
-                </a>            
+                </a>
             </div>
         </div>
     </section>
@@ -251,11 +354,14 @@
     <section class="py-16 bg-white text-center px-6 md:px-12">
         <div class="container mx-auto">
             <h3 class="text-3xl font-bold slide-up">Explore Our Campus</h3>
-            <div class="mt-8 flex justify-center">
-                <video class="w-full md:w-3/4 h-64 md:h-96 rounded-lg shadow-lg" controls>
+            <div class="mt-8 flex justify-center relative">
+                <video id="campusVideo" class="w-full md:w-4/5 h-[400px] md:h-[600px] rounded-lg shadow-lg object-cover" autoplay muted loop loading="lazy">
                     <source src="images/sanghamitra-school-video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <button id="muteToggle" class="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded" aria-label="Toggle mute">
+                    <i class="fas fa-volume-mute"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -286,9 +392,9 @@
     <section class="py-16 bg-gradient-to-b from-[#001f3f] to-[#001a35] text-center text-white px-6 md:px-12">
         <div class="container mx-auto">
             <h3 class="text-3xl font-bold slide-up">Admissions Open for 2025-26</h3>
-            <a href="admissions-apply-online.html" class="mt-8 bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition slide-up inline-block text-center">
+            <a href="admissions-apply-online.html" class="mt-8 bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition slide-up inline-block text-center" style="width: 200px;">
                 Apply Now
-            </a>        
+            </a>
         </div>
     </section>
 
@@ -321,16 +427,31 @@
     </footer>
 
     <script>
-        // JavaScript for dropdown functionality
-        document.querySelectorAll('.dropdown').forEach(dropdown => {
-            dropdown.addEventListener('mouseenter', () => {
-                dropdown.querySelector('.dropdown-content').classList.add('block');
-            });
-            dropdown.addEventListener('mouseleave', () => {
-                dropdown.querySelector('.dropdown-content').classList.remove('block');
-            });
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuContent = document.getElementById('mobileMenuContent');
+    
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('hidden');
+            mobileMenuContent.classList.remove('-translate-x-full');
+            mobileMenuContent.classList.add('translate-x-0');
         });
-    </script>
+    
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuContent.classList.remove('translate-x-0');
+            mobileMenuContent.classList.add('-translate-x-full');
+        });
+    
+        mobileMenuOverlay.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('hidden');
+            mobileMenuContent.classList.remove('translate-x-0');
+            mobileMenuContent.classList.add('-translate-x-full');
+        });
+      </script>
+      <script src="mobileview.js"></script>
 </body>
 
 </html>

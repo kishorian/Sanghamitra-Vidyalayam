@@ -108,3 +108,22 @@
         font-size: 1rem;
     }
 }
+/* Mobile Menu Styles */
+#mobileMenuContent {
+    overflow-y: auto;
+}
+
+#mobileMenuOverlay {
+    z-index: 40;
+}
+
+#mobileMenuContent {
+    z-index: 50;
+}
+
+/* Hide desktop menu on mobile */
+@media (max-width: 768px) {
+    #mainNav {
+        display: none;
+    }
+}
